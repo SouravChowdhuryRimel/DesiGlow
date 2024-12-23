@@ -1,0 +1,135 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+<style>
+    /* Style for team members */
+    .team-member {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .team-member h4 {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    .team-member p {
+        margin: 5px 0;
+    }
+
+    .img-fluid {
+        height: 300px;
+        width: auto;
+    }
+
+    /* Add more styles as needed for your design */
+</style>
+
+<!-- Navbar Start -->
+<div class="container-fluid">
+    <div class="row border-top px-xl-5">
+        <div class="col-lg-3 d-none d-lg-block">
+            <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100"
+                data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
+                <h6 class="m-0">Categories</h6>
+                <i class="fa fa-angle-down text-dark"></i>
+            </a>
+            <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light"
+                id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
+                {% include "category.html" %}
+            </nav>
+        </div>
+        <div class="col-lg-9">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                <a href="" class="text-decoration-none d-block d-lg-none">
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><img src = "{% static "img/logo.png" %}" width = "173px" height = "auto" ></h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                {% include "navbar.html" %}
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Navbar End -->
+
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-secondary mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">About</h1>
+        <div class="d-inline-flex">
+            <p class="m-0"><a href="">Home</a></p>
+            <p class="m-0 px-2">-</p>
+            <p class="m-0">About</p>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+
+
+
+
+
+<!-- Description Section Start -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="font-weight-bold">About</h2>
+            <p style="text-align: justify;">
+                Aspen Medical Solutions is your trusted destination in Bangladesh for a diverse range of high-quality
+                medical equipment and organic beauty products. Committed to enhancing the health, wellness, and beauty
+                of our customers, we provide reliable healthcare solutions and self-care essentials, all while
+                maintaining a customer-centric approach. Our dedication to quality, convenience, and expert guidance
+                makes Aspen Medical Solutions your go-to source for all your medical and beauty needs. Join us on your
+                wellness journey and experience the Aspen difference today.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- Description Section End -->
+<!-- Team Section Start -->
+<div class="container mt-5">
+    <h2 class="font-weight-bold text-center">Our Team</h2>
+    <div class="row mt-4">
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="team-member">
+                <img src="{% static 'img/akash.jpeg' %}" alt="Akash Ahammed" class="img-fluid">
+                <h4 class="font-weight-bold">Akash Ahammed</h4>
+                <p>CEO & Founder</p>
+                <p>+88 01633-619855</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="team-member">
+                <img src="{% static 'img/shamin.jpeg' %}" alt="Akash Ahammed" class="img-fluid">
+                <h4 class="font-weight-bold">Samin Chowdhury</h4>
+                <p>Executive Officer</p>
+                <p>+88 01709-982953</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="team-member">
+                <img src="{% static 'img/limon.jpg' %}" alt="Akash Ahammed" class="img-fluid">
+                <h4 class="font-weight-bold">Mehedi Hassan</h4>
+                <p>Business Development</p>
+                <p>+880 1791-179592</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="team-member">
+                <img src="{% static 'img/shakil.jpeg' %}" alt="Akash Ahammed" class="img-fluid">
+                <h4 class="font-weight-bold">Sakil Ahamed</h4>
+                <p>Marketing Executive</p>
+                <p>+880 1784-214182</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Team Section End -->
+
+
+
+{% endblock content %}

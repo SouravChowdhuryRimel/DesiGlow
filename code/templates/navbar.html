@@ -1,0 +1,82 @@
+<style>
+    .akash-navbar {
+        background-color: #8E7AB5;
+    }
+
+
+
+
+
+    @media screen and (max-width: 479px) {
+        .akash-navbar {
+            background-color: #8E7AB5;
+            padding: 29px;
+            margin: 29px;
+            font-weight: bold;
+        }
+
+    }
+</style>
+<div class="collapse navbar-collapse justify-content-between akash-navbar" id="navbarCollapse">
+    <div class="navbar-nav mr-auto py-0">
+        <a style="color: white;" href="{% url 'home' %}" class="nav-item nav-link">All Product</a>
+        <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                Men
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'tshirt' %}">T-Shirt</a>
+                <a class="dropdown-item" href="{% url 'shirt' %}">Shirt</a>
+                <a class="dropdown-item" href="{% url 'polo' %}">Polo</a>
+                <a class="dropdown-item" href="{% url 'jeans' %}">Jeans</a>
+                <a class="dropdown-item" href="{% url 'jacket' %}">Jacket</a>
+                <a class="dropdown-item" href="{% url 'panjabi' %}">Panjabi</a>
+                <a class="dropdown-item" href="{% url 'pajama' %}">Pajama</a>
+                <!-- You can add more dropdown items here as needed -->
+            </div>
+        </div>
+        <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                Women
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'tops' %}">Tops & T-Shirt</a>
+                <a class="dropdown-item" href="{% url 'kamiz' %}">Kameez/Kurti</a>
+                <!-- You can add more dropdown items here as needed -->
+            </div>
+        </div>
+        <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                Lifestyle
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'wallet' %}">Wallet</a>
+                <a class="dropdown-item" href="{% url 'bag' %}">Bag</a>
+                <a class="dropdown-item" href="{% url 'cap' %}">Cap</a>
+                <a class="dropdown-item" href="{% url 'sunglasses' %}">Sunglasses</a>
+                <!-- You can add more dropdown items here as needed -->
+            </div>
+        </div>
+    </div>
+    <div class="navbar-nav ml-auto py-0">
+        {% if user.is_authenticated %}
+        <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                My Account <strong>{{ user.get_full_name }}</strong>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'profile' %}">Account</a>
+                <a class="dropdown-item" href="{% url 'signout' %}">Signout</a>
+                <!-- You can add more dropdown items here as needed -->
+            </div>
+        </div>
+        {% else %}
+        <a style="color: white;" href="{% url 'signin' %}" class="nav-item nav-link">Login</a>
+        <a style="color: white;" href="{% url 'signup' %}" class="nav-item nav-link">Register</a>
+        {% endif %}
+    </div>
+</div>

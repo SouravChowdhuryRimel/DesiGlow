@@ -1,0 +1,44 @@
+{% load static %}
+<style>
+        .a {
+                margin-top: 29px;
+        }
+</style>
+<div class="navbar-nav w-100 overflow-hidden" style="height: auto">
+        {% comment %} <div class="nav-item dropdown">
+                <a href="#" class="nav-link" data-toggle="dropdown">Dresses <i
+                                class="fa fa-angle-down float-right mt-1"></i></a>
+                <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
+                        <a href="" class="dropdown-item">Men's Dresses</a>
+                        <a href="" class="dropdown-item">Women's Dresses</a>
+                        <a href="" class="dropdown-item">Baby's Dresses</a>
+                </div>
+        </div> {% endcomment %}
+        <a class="a" href="{% url 'tshirt' %}" class="nav-item nav-link"><img
+                        src="{% static 'img/category/tshirt.png' %}" width="29px" height="29px" alt=""> T-Shirt</a>
+        <a class="a" href="{% url 'shirt' %}" class="nav-item nav-link"><img
+                        src="{% static 'img/category/fullsleeve.png' %}" width="29px" height="29px" alt=""> Shirt</a>
+        <a class="a" href="{% url 'jacket' %}" class="nav-item nav-link"><img
+                        src="{% static 'img/category/jacket.png' %}" width="29px" height="29px" alt=""> Jacket</a>
+        <a class="a" href="{% url 'jeans' %}" class="nav-item nav-link"><img src="{% static 'img/category/pant.png' %}"
+                        width="29px" height="29px" alt=""> Jeans</a>
+        <a class="a" href="{% url 'panjabi' %}" class="nav-item nav-link"><img src="{% static 'img/category/panjabi.png' %}"
+                        width="29px" height="29px" alt=""> Panjabi</a>
+        <a class="a" href="{% url 'pajama' %}" class="nav-item nav-link"><img src="{% static 'img/category/pajama.png' %}"
+                        width="29px" height="29px" alt=""> Pajama</a>
+        <a class="a" href="{% url 'polo' %}" class="nav-item nav-link"><img src="{% static 'img/category/polo.png' %}"
+                        width="29px" height="29px" alt=""> Polo</a>
+        <a class="a" href="{% url 'tops' %}" class="nav-item nav-link"><img
+                        src="{% static 'img/category/lady_s.png' %}" width="29px" height="29px" alt=""> Tops &
+                T-shirt</a>
+        <a class="a" href="{% url 'kamiz' %}" class="nav-item nav-link"><img
+                        src="{% static 'img/category/kamiz.png' %}" width="29px" height="29px" alt=""> Kamiz/Kurti</a>
+        <a class="a" href="{% url 'wallet' %}" class="nav-item nav-link"><img
+                        src="{% static 'img/category/wallet.png' %}" width="29px" height="29px" alt=""> Wallet</a>
+        <a class="a" href="{% url 'bag' %}" class="nav-item nav-link"><img
+                        src="{% static 'img/category/bag.png' %}" width="29px" height="29px" alt=""> Bag</a>
+        <a class="a" href="{% url 'cap' %}" class="nav-item nav-link"><img
+                        src="{% static 'img/category/cap.png' %}" width="29px" height="29px" alt=""> Cap</a>
+        <a class="a" href="{% url 'sunglasses' %}" class="nav-item nav-link"><img
+                        src="{% static 'img/category/sunglasses.png' %}" width="29px" height="29px" alt=""> Sunglasses</a>
+</div>

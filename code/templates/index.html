@@ -1,0 +1,927 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+
+<style>
+    .product-imgimg {
+        height: 273px;
+        width: auto;
+        box-shadow: 1px 1px 1px black;
+    }
+
+
+
+    .product-category {
+        width: 93%;
+        margin: auto;
+    }
+
+    .card-body {
+        background-color: #f3f3f3;
+    }
+
+    .card-footer {
+        background-color: #f3f3f3;
+    }
+
+    .carousel-inner {
+        height: 500px;
+    }
+
+
+    .header-carousel {
+        height: 500px;
+
+    }
+
+    .carousel-item {
+        height: 500px;
+        width: 100%;
+        background-color: #8E7AB5;
+
+    }
+
+    .cat-item {
+        height: 129px;
+        width: 129px;
+        margin: auto;
+        align-items: center;
+        justify-content: center;
+        padding: 7px;
+        box-shadow: 0px 0px 3px 1px rgb(199, 199, 199);
+    }
+
+    .category {
+        width: 100%;
+    }
+
+
+    .img {
+        height: 73px;
+        width: 100%;
+        border-radius: 19px;
+    }
+
+    .col-lg-1 {
+        margin: auto;
+    }
+
+
+    .font {
+        font-size: 15px;
+    }
+
+
+    .cat-item .cat-im:hover+h5.font {
+        color: #E493B3;
+    }
+
+
+
+
+    h2 {
+        color: #000;
+        font-size: 26px;
+        font-weight: 300;
+        text-align: center;
+        text-transform: uppercase;
+        position: relative;
+        margin: 30px 0 80px;
+    }
+
+    h2 b {
+        color: #E493B3;
+    }
+
+    h2::after {
+        content: '';
+        width: 100px;
+        position: absolute;
+        margin: 0 auto;
+        height: 4px;
+        background: rgba(0, 0, 0, 0.2);
+        left: 0;
+        right: 0;
+        bottom: -20px;
+    }
+
+    .carousel {
+        margin: 50px auto;
+
+    }
+
+    .carousel .item {
+        min-height: 330px;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .carousel .item .img-box {
+        height: 160px;
+        width: 100%;
+        position: relative;
+    }
+
+    .carousel .item img {
+        max-width: 100%;
+        max-height: 100%;
+        display: inline-block;
+        position: absolute;
+        bottom: 0;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+    }
+
+    .carousel .item h4 {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    .carousel .item .btn {
+        color: #333;
+        border-radius: 0;
+        font-size: 11px;
+        text-transform: uppercase;
+        font-weight: bold;
+        background: none;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        margin-top: 5px;
+        line-height: 16px;
+    }
+
+    .carousel .item .btn:hover,
+    .carousel .item .btn:focus {
+        color: #fff;
+        background: #000;
+        border-color: #000;
+        box-shadow: none;
+    }
+
+    .carousel .item .btn i {
+        font-size: 14px;
+        font-weight: bold;
+        margin-left: 5px;
+    }
+
+    .carousel .thumb-wrapper {
+        text-align: center;
+    }
+
+    .carousel .thumb-content {
+        padding: 15px;
+    }
+
+    .carousel .carousel-control {
+        height: 100px;
+        width: 40px;
+        background: none;
+        margin: auto 0;
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel .carousel-control i {
+        font-size: 30px;
+        position: absolute;
+        top: 50%;
+        display: inline-block;
+        margin: -16px 0 0 0;
+        z-index: 5;
+        left: 0;
+        right: 0;
+        color: rgba(0, 0, 0, 0.8);
+        text-shadow: none;
+        font-weight: bold;
+    }
+
+    .carousel .item-price {
+        font-size: 13px;
+        padding: 2px 0;
+    }
+
+    .carousel .item-price strike {
+        color: #999;
+        margin-right: 5px;
+    }
+
+    .carousel .item-price span {
+        color: #86bd57;
+        font-size: 110%;
+    }
+
+    .carousel .carousel-control.left i {
+        margin-left: -3px;
+    }
+
+    .carousel .carousel-control.left i {
+        margin-right: -3px;
+    }
+
+    .carousel .carousel-indicators {
+        bottom: -50px;
+    }
+
+    .carousel-indicators li,
+    .carousel-indicators li.active {
+        width: 10px;
+        height: 10px;
+        margin: 4px;
+        border-radius: 50%;
+        border-color: transparent;
+    }
+
+    .carousel-indicators li {
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel-indicators li.active {
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    .star-rating li {
+        padding: 0;
+    }
+
+    .star-rating i {
+        font-size: 14px;
+        color: #ffc000;
+    }
+
+    @media screen and (max-width: 479px) {
+        .category {
+            margin-left: 0px;
+        }
+
+        .carousel-inner {
+            height: 129px;
+        }
+
+        .header-carousel {
+            height: 129px;
+        }
+
+        .cat-item {
+            height: 129px;
+            width: 83px;
+            margin: auto;
+            align-items: justify;
+            justify-content: justify;
+            padding: 0px;
+            box-shadow: 0px 0px 3px 1px rgb(199, 199, 199);
+        }
+
+        .category {
+            margin: auto;
+            margin-top: 29px;
+            text-align: center;
+
+
+        }
+
+        .font {
+            font-size: 11px;
+            padding-bottom: 7px;
+        }
+
+        .main-category {
+            padding: 3px;
+        }
+
+        .carousel-item {
+            height: 199px;
+        }
+
+        .carousel-control-prev {
+            display: none;
+        }
+
+        .carousel-control-next {
+            display: none;
+        }
+
+    }
+
+
+
+
+
+    @media screen and (max-width: 1700px) {
+
+        .product-imgimg {
+            height: 229px;
+            width: auto;
+            box-shadow: 1px 1px 1px black;
+        }
+
+        .category {
+            margin-left: 0px;
+        }
+
+        .carousel-inner {
+            height: 199px;
+        }
+
+        .header-carousel {
+            height: 199px;
+        }
+
+        .cat-item {
+            height: 129px;
+            width: 83px;
+            margin: auto;
+            align-items: justify;
+            justify-content: justify;
+            padding: 0px;
+            box-shadow: 0px 0px 3px 1px rgb(199, 199, 199);
+        }
+
+        .category {
+            margin: auto;
+            margin-top: 29px;
+            text-align: center;
+
+
+        }
+
+        .font {
+            font-size: 11px;
+            padding-bottom: 7px;
+        }
+
+        .main-category {
+            padding: 3px;
+        }
+
+        .carousel-item {
+            height: 199px;
+        }
+
+        .carousel-control-prev {
+            display: none;
+        }
+
+        .carousel-control-next {
+            display: none;
+        }
+
+    }
+</style>
+
+
+<!-- Navbar Start -->
+<div class='container-fluid mb-5'>
+    <div class='row border-top px-xl-5'>
+        <div class='col-lg-3 d-none d-lg-block'>
+            <a class='btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100'
+                data-toggle='collapse' href='#navbar-vertical' style='height: 65px; margin-top: -1px; padding: 0 30px;'>
+                <h6 class='m-0' style="color: white;">Categories</h6>
+                <i class='fa fa-angle-down text-dark'></i>
+            </a>
+            <nav class='collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0'
+                id='navbar-vertical'>
+
+
+
+                {% include 'category.html' %}
+
+
+
+            </nav>
+        </div>
+        <div class='col-lg-9'>
+            <nav class='navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0'>
+                <a href='' class='text-decoration-none d-block d-lg-none'>
+                    <h1 class='m-0 display-5 font-weight-semi-bold'><img src="{% static 'img/logo.png' %}" width='173px'
+                            height='auto'></h1>
+                </a>
+                <button type='button' class='navbar-toggler' data-toggle='collapse' data-target='#navbarCollapse'>
+                    <span class='navbar-toggler-icon'></span>
+                </button>
+
+
+
+
+
+
+
+                {% include 'navbar.html' %}
+
+
+
+
+
+
+
+            </nav>
+            <div id='header-carousel' class='carousel slide' data-ride='carousel'>
+                <div class='carousel-inner'>
+                    <div class='carousel-item active'>
+                        <img src="{% static 'img/tshirt.jpg' %}" alt="">
+                        <div class='carousel-caption d-flex flex-column align-items-center justify-content-center'>
+                            <div class='p-3' style='max-width: 100%;'>
+                                <h4 class='text-light text-uppercase font-weight-medium mb-3'>10% Off Your First Order
+                                </h4>
+                                <h3 class='display-4 text-white font-weight-semi-bold mb-4'>T-Shirt</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='carousel-item'>
+                        <img src="{% static 'img/tshirt.jpg' %}" alt="">
+                        <div class='carousel-caption d-flex flex-column align-items-center justify-content-center'>
+                            <div class='p-3' style='max-width: 100%;'>
+                                <h4 class='text-light text-uppercase font-weight-medium mb-3'>10% Off Your First Order
+                                </h4>
+                                <h3 class='display-4 text-white font-weight-semi-bold mb-4'>Ladies T-Shirt Collection
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class='carousel-control-prev' href='#header-carousel' data-slide='prev'>
+                    <div class='btn btn-dark' style='width: 45px; height: 45px;'>
+                        <span class='carousel-control-prev-icon mb-n2'></span>
+                    </div>
+                </a>
+                <a class='carousel-control-next' href='#header-carousel' data-slide='next'>
+                    <div class='btn btn-dark' style='width: 45px; height: 45px;'>
+                        <span class='carousel-control-next-icon mb-n2'></span>
+                    </div>
+                </a>
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <!-- Categories Start -->
+            <div class='container-fluid pt-3'>
+                <div class='row px-xl-0 pb-3 category'>
+                    <div class='col-lg-1 col-md-3 col-4 pb-1 main-category'>
+                        <div class='cat-item d-flex flex-column mb-4'>
+
+                            <a href="{% url 'tshirt' %}" class='cat-im position-relative overflow-hidden mb-3'>
+                                <img class='img-fluid img' src="{% static 'img/category/tshirt.png' %}" alt=''>
+                            </a>
+                            <h5 class='font m-0' style="text-align: center;">T-Shirt</h5>
+                        </div>
+                    </div>
+
+
+                    <div class='col-lg-1 col-md-3 col-4 pb-1 main-category'>
+                        <div class='cat-item d-flex flex-column mb-4'>
+
+                            <a href="{% url 'shirt' %}" class='cat-im position-relative overflow-hidden mb-3'>
+                                <img class='img-fluid img' src="{% static 'img/category/fullsleeve.png' %}" alt=''>
+                            </a>
+                            <h5 class='font m-0' style="text-align: center;">Shirt</h5>
+                        </div>
+                    </div>
+                    <div class='col-lg-1 col-md-3 col-4 pb-1 main-category'>
+                        <div class='cat-item d-flex flex-column mb-4'>
+
+                            <a href="{% url 'jacket' %}" class='cat-im position-relative overflow-hidden mb-3'>
+                                <img class='img-fluid img' src="{% static 'img/category/jacket.png' %}" alt=''>
+                            </a>
+                            <h5 class='font m-0' style="text-align: center;">Winter Jacket</h5>
+                        </div>
+                    </div>
+                    <div class='col-lg-1 col-md-3 col-4 pb-1 main-category'>
+                        <div class='cat-item d-flex flex-column mb-4'>
+
+                            <a href="{% url 'jeans' %}" class='cat-im position-relative overflow-hidden mb-3'>
+                                <img class='img-fluid img' src="{% static 'img/category/pant.png' %}" alt=''>
+                            </a>
+                            <h5 class='font m-0' style="text-align: center;">Pant</h5>
+                        </div>
+                    </div>
+
+                    <div class='col-lg-1 col-md-3 col-4 pb-1 main-category'>
+                        <div class='cat-item d-flex flex-column mb-4'>
+
+                            <a href="{% url 'tops' %}" class='cat-im position-relative overflow-hidden mb-3'>
+                                <img class='img-fluid img' src="{% static 'img/category/lady_s.png' %}" alt=''>
+                            </a>
+                            <h5 class='font m-0' style="text-align: center;">Ladies T-Shirt Collection</h5>
+                        </div>
+                    </div>
+
+                    <div class='col-lg-1 col-md-3 col-4 pb-1 main-category'>
+                        <div class='cat-item d-flex flex-column mb-4'>
+
+                            <a href="{% url 'wallet' %}" class='cat-im position-relative overflow-hidden mb-3'>
+                                <img class='img-fluid img' src="{% static 'img/category/beauty.png' %}" alt=''>
+                            </a>
+                            <h5 class='font m-0' style="text-align: center;">Beauty Product</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <!-- Categories End -->
+        </div>
+    </div>
+</div>
+<!-- Navbar End -->
+
+
+<!-- Featured Start -->
+<div class='container-fluid pt-5'>
+    <div class='row px-xl-5 pb-3'>
+        <div class='col-lg-3 col-md-6 col-sm-12 pb-1'>
+            <div class='d-flex align-items-center border mb-4' style='padding: 30px;'>
+                <h1 class='fa fa-check text-primary m-0 mr-3'></h1>
+                <h5 class='font-weight-semi-bold m-0'>Quality Product</h5>
+            </div>
+        </div>
+        <div class='col-lg-3 col-md-6 col-sm-12 pb-1'>
+            <div class='d-flex align-items-center border mb-4' style='padding: 30px;'>
+                <h1 class='fa fa-shipping-fast text-primary m-0 mr-2'></h1>
+                <h5 class='font-weight-semi-bold m-0'>Free Shipping</h5>
+            </div>
+        </div>
+        <div class='col-lg-3 col-md-6 col-sm-12 pb-1'>
+            <div class='d-flex align-items-center border mb-4' style='padding: 30px;'>
+                <h1 class='fas fa-exchange-alt text-primary m-0 mr-3'></h1>
+                <h5 class='font-weight-semi-bold m-0'>14-Day Return</h5>
+            </div>
+        </div>
+        <div class='col-lg-3 col-md-6 col-sm-12 pb-1'>
+            <div class='d-flex align-items-center border mb-4' style='padding: 30px;'>
+                <h1 class='fa fa-phone-volume text-primary m-0 mr-3'></h1>
+                <h5 class='font-weight-semi-bold m-0'>24/7 Support</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Featured End -->
+
+
+
+
+
+<!-- Products Start -->
+<div class='container-fluid pt-5'>
+    <div class='text-center mb-4'>
+        <h2 class='section-title px-5'><span class='px-2'>New Arival</span></h2>
+    </div>
+    <div class='row px-xl-5 pb-3 product-category'>
+
+        {% for product in new_arival %}
+        <div class='col-lg-2 col-md-3 col-sm-12 pb-1'>
+            <div class='card product-item border-0 mb-4'>
+                <div class='card-header product-img position-relative overflow-hidden bg-transparent border p-0'>
+                    {% if product.photo %}
+                    <img class='img-fluid w-100 product-imgimg' src="{{ product.photo.url }}" alt=''>
+                    {% endif %}
+                </div>
+                <div class='card-body border-left border-right text-center p-0 pt-4 pb-3'>
+
+                    <div class='d-flex justify-content-center'>
+                        <h5><b style='color: #E493B3;'>ট {{ product.product_price }}</b></h5>
+                    </div>
+
+                    <p class='text-truncate mb-3'>{{ product.product_name }}</p>
+                </div>
+                <hr>
+                <div class='card-footer d-flex justify-content-between border'>
+                    <a href="{% url 'detail' product.pk %}" class='btn btn-sm text-dark p-0'><i
+                            class='fas fa-eye text-primary mr-1'></i>View</a>
+                    <form action="{% url 'cart_form' %}" method='POST'>
+                        {% csrf_token %}
+                        <input name='username' type='hidden' value="{{ user.username }}">
+                        <input name='product_price' type='hidden' value="{{ product.product_price }}">
+                        <input name='product_name' type='hidden' value="{{ product.product_name }}">
+                        {% if product.photo %}
+                        <input name='photo' type='hidden' value="{{ product.photo.url }}">
+                        {% endif %}
+                        <button class='btn btn-sm text-dark p-0' type='submit'><i
+                                class='fas fa-shopping-cart text-primary mr-1'></i>Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class='container-fluid'>
+            <div style='text-align: right;'>
+                <a href="{% url 'all_product' %}">See all</a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- Products End -->
+
+
+
+
+
+
+<!-- Products Start -->
+<div class='container-fluid pt-5'>
+    <div class='text-center mb-4'>
+        <h2 class='section-title px-5'><span class='px-2'>T-Shirt</span></h2>
+    </div>
+    <div class='row px-xl-5 pb-3 product-category'>
+
+        {% for product in product_list %}
+        {% if product.product_category == 'T-Shirt' %}
+        <div class='col-lg-2 col-md-3 col-sm-12 pb-1'>
+            <div class='card product-item border-0 mb-4'>
+                <div class='card-header product-img position-relative overflow-hidden bg-transparent border p-0'>
+                    {% if product.photo %}
+                    <img class='img-fluid w-100 product-imgimg' src="{{ product.photo.url }}" alt=''>
+                    {% endif %}
+                </div>
+                <div class='card-body border-left border-right text-center p-0 pt-4 pb-3'>
+
+                    <div class='d-flex justify-content-center'>
+                        <h5><b style='color: #E493B3;'>ট {{ product.product_price }}</b></h5>
+                    </div>
+
+                    <p class='text-truncate mb-3'>{{ product.product_name }}</p>
+                </div>
+                <hr>
+                <div class='card-footer d-flex justify-content-between  border'>
+                    <a href="{% url 'detail' product.pk %}" class='btn btn-sm text-dark p-0'><i
+                            class='fas fa-eye text-primary mr-1'></i>View</a>
+                    <form action="{% url 'cart_form' %}" method='POST'>
+                        {% csrf_token %}
+                        <input name='username' type='hidden' value="{{ user.username }}">
+                        <input name='product_price' type='hidden' value="{{ product.product_price }}">
+                        <input name='product_name' type='hidden' value="{{ product.product_name }}">
+                        {% if product.photo %}
+                        <input name='photo' type='hidden' value="{{ product.photo.url }}">
+                        {% endif %}
+                        <button class='btn btn-sm text-dark p-0' type='submit'><i
+                                class='fas fa-shopping-cart text-primary mr-1'></i>Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <div class='container-fluid'>
+            <div style='text-align: right;'>
+                <a href="{% url 'all_product' %}">See all</a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- Products End -->
+
+
+
+
+
+
+<!-- Products Start -->
+<div class='container-fluid pt-5'>
+    <div class='text-center mb-4'>
+        <h2 class='section-title px-5'><span class='px-2'>Jacket</span></h2>
+    </div>
+    <div class='row px-xl-5 pb-3 product-category'>
+
+        {% for product in product_list %}
+        {% if product.product_category == 'Winter Jacket' %}
+        <div class='col-lg-2 col-md-3 col-sm-12 pb-1'>
+            <div class='card product-item border-0 mb-4'>
+                <div class='card-header product-img position-relative overflow-hidden bg-transparent border p-0'>
+                    {% if product.photo %}
+                    <img class='img-fluid w-100 product-imgimg' src="{{ product.photo.url }}" alt=''>
+                    {% endif %}
+                </div>
+                <div class='card-body border-left border-right text-center p-0 pt-4 pb-3'>
+
+                    <div class='d-flex justify-content-center'>
+                        <h5><b style='color: #E493B3;'>ট {{ product.product_price }}</b></h5>
+                    </div>
+
+                    <p class='text-truncate mb-3'>{{ product.product_name }}</p>
+                </div>
+                <hr>
+                <div class='card-footer d-flex justify-content-between border'>
+                    <a href="{% url 'detail' product.pk %}" class='btn btn-sm text-dark p-0'><i
+                            class='fas fa-eye text-primary mr-1'></i>View</a>
+                    <form action="{% url 'cart_form' %}" method='POST'>
+                        {% csrf_token %}
+                        <input name='username' type='hidden' value="{{ user.username }}">
+                        <input name='product_price' type='hidden' value="{{ product.product_price }}">
+                        <input name='product_name' type='hidden' value="{{ product.product_name }}">
+                        {% if product.photo %}
+                        <input name='photo' type='hidden' value="{{ product.photo.url }}">
+                        {% endif %}
+                        <button class='btn btn-sm text-dark p-0' type='submit'><i
+                                class='fas fa-shopping-cart text-primary mr-1'></i>Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <div class='container-fluid'>
+            <div style='text-align: right;'>
+                <a href="{% url 'all_product' %}">See all</a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- Products End -->
+
+
+
+<!-- Products Start -->
+<div class='container-fluid pt-5'>
+    <div class='text-center mb-4'>
+        <h2 class='section-title px-5'><span class='px-2'>Jeans</span></h2>
+    </div>
+    <div class='row px-xl-5 pb-3 product-category'>
+
+        {% for product in product_list %}
+        {% if product.product_category == 'Jeans' %}
+        <div class='col-lg-2 col-md-3 col-sm-12 pb-1'>
+            <div class='card product-item border-0 mb-4'>
+                <div class='card-header product-img position-relative overflow-hidden bg-transparent border p-0'>
+                    {% if product.photo %}
+                    <img class='img-fluid w-100 product-imgimg' src="{{ product.photo.url }}" alt=''>
+                    {% endif %}
+                </div>
+                <div class='card-body border-left border-right text-center p-0 pt-4 pb-3'>
+
+                    <div class='d-flex justify-content-center'>
+                        <h5><b style='color: #E493B3;'>ট {{ product.product_price }}</b></h5>
+                    </div>
+
+                    <p class='text-truncate mb-3'>{{ product.product_name }}</p>
+                </div>
+                <hr>
+                <div class='card-footer d-flex justify-content-between  border'>
+                    <a href="{% url 'detail' product.pk %}" class='btn btn-sm text-dark p-0'><i
+                            class='fas fa-eye text-primary mr-1'></i>View</a>
+                    <form action="{% url 'cart_form' %}" method='POST'>
+                        {% csrf_token %}
+                        <input name='username' type='hidden' value="{{ user.username }}">
+                        <input name='product_price' type='hidden' value="{{ product.product_price }}">
+                        <input name='product_name' type='hidden' value="{{ product.product_name }}">
+                        {% if product.photo %}
+                        <input name='photo' type='hidden' value="{{ product.photo.url }}">
+                        {% endif %}
+                        <button class='btn btn-sm text-dark p-0' type='submit'><i
+                                class='fas fa-shopping-cart text-primary mr-1'></i>Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <div class='container-fluid'>
+            <div style='text-align: right;'>
+                <a href="{% url 'all_product' %}">See all</a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- Products End -->
+
+
+
+
+
+
+<!-- Products Start -->
+<div class='container-fluid pt-5'>
+    <div class='text-center mb-4'>
+        <h2 class='section-title px-5'><span class='px-2'>Kamiz/Kurti</span></h2>
+    </div>
+    <div class='row px-xl-5 pb-3 product-category'>
+
+        {% for product in product_list %}
+        {% if product.product_category == 'Kamiz/Kurti' %}
+        <div class='col-lg-2 col-md-3 col-sm-12 pb-1'>
+            <div class='card product-item border-0 mb-4'>
+                <div class='card-header product-img position-relative overflow-hidden bg-transparent border p-0'>
+                    {% if product.photo %}
+                    <img class='img-fluid w-100 product-imgimg' src="{{ product.photo.url }}" alt=''>
+                    {% endif %}
+                </div>
+                <div class='card-body border-left border-right text-center p-0 pt-4 pb-3'>
+
+                    <div class='d-flex justify-content-center'>
+                        <h5><b style='color: #E493B3;'>ট {{ product.product_price }}</b></h5>
+                    </div>
+
+                    <p class='text-truncate mb-3'>{{ product.product_name }}</p>
+                </div>
+                <hr>
+                <div class='card-footer d-flex justify-content-between border'>
+                    <a href="{% url 'detail' product.pk %}" class='btn btn-sm text-dark p-0'><i
+                            class='fas fa-eye text-primary mr-1'></i>View</a>
+                    <form action="{% url 'cart_form' %}" method='POST'>
+                        {% csrf_token %}
+                        <input name='username' type='hidden' value="{{ user.username }}">
+                        <input name='product_price' type='hidden' value="{{ product.product_price }}">
+                        <input name='product_name' type='hidden' value="{{ product.product_name }}">
+                        {% if product.photo %}
+                        <input name='photo' type='hidden' value="{{ product.photo.url }}">
+                        {% endif %}
+                        <button class='btn btn-sm text-dark p-0' type='submit'><i
+                                class='fas fa-shopping-cart text-primary mr-1'></i>Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <div class='container-fluid'>
+            <div style='text-align: right;'>
+                <a href="{% url 'all_product' %}">See all</a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- Products End -->
+
+
+
+
+
+
+<!-- Products Start -->
+<div class='container-fluid pt-5'>
+    <div class='text-center mb-4'>
+        <h2 class='section-title px-5'><span class='px-2'>LifeStyle</span></h2>
+    </div>
+    <div class='row px-xl-5 pb-3 product-category'>
+
+        {% for product in product_list %}
+        {% if product.product_category == 'Wallet' or product.product_category == 'Bag' or product.product_category == 'Cap' or product.product_category == 'Sunglasses' %}
+        <div class='col-lg-2 col-md-3 col-sm-12 pb-1'>
+            <div class='card product-item border-0 mb-4'>
+                <div class='card-header product-img position-relative overflow-hidden bg-transparent border p-0'>
+                    {% if product.photo %}
+                    <img class='img-fluid w-100 product-imgimg' src="{{ product.photo.url }}" alt=''>
+                    {% endif %}
+                </div>
+                <div class='card-body border-left border-right text-center p-0 pt-4 pb-3'>
+
+                    <div class='d-flex justify-content-center'>
+                        <h5><b style='color: #E493B3;'>ট {{ product.product_price }}</b></h5>
+                    </div>
+
+                    <p class='text-truncate mb-3'>{{ product.product_name }}</p>
+                </div>
+                <hr>
+                <div class='card-footer d-flex justify-content-between border'>
+                    <a href="{% url 'detail' product.pk %}" class='btn btn-sm text-dark p-0'><i
+                            class='fas fa-eye text-primary mr-1'></i>View</a>
+                    <form action="{% url 'cart_form' %}" method='POST'>
+                        {% csrf_token %}
+                        <input name='username' type='hidden' value="{{ user.username }}">
+                        <input name='product_price' type='hidden' value="{{ product.product_price }}">
+                        <input name='product_name' type='hidden' value="{{ product.product_name }}">
+                        {% if product.photo %}
+                        <input name='photo' type='hidden' value="{{ product.photo.url }}">
+                        {% endif %}
+                        <button class='btn btn-sm text-dark p-0' type='submit'><i
+                                class='fas fa-shopping-cart text-primary mr-1'></i>Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <div class='container-fluid'>
+            <div style='text-align: right;'>
+                <a href="{% url 'all_product' %}">See all</a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- Products End -->
+{% endblock content %}
